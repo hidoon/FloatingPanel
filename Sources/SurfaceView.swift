@@ -60,8 +60,18 @@ public class SurfaceAppearance: NSObject {
         set { _cornerCurve = newValue }
     }
 
-    @available(iOS 13.0, *)
     private var _cornerCurve: CALayerCornerCurve?
+    
+    // Computed property to safely access the corner curve based on iOS availability
+    @available(iOS 13.0, *)
+    var cornerCurve: CALayerCornerCurve? {
+        get {
+            return _cornerCurve
+        }
+        set {
+            _cornerCurve = newValue
+        }
+    }
 
     /// An array of shadows used to create drop shadows underneath a surface view.
     public var shadows: [Shadow] = [Shadow()]
